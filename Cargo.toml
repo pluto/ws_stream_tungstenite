@@ -10,9 +10,9 @@ repository = "najamelan/ws_stream_tungstenite"
 rustc_version = "^0.4"
 
 [dependencies]
-[dependencies.async-tungstenite]
+[dependencies.tokio-tungstenite]
 default-features = false
-version = "^0.25"
+version = "^0.23"
 
 [dependencies.async_io_stream]
 default-features = false
@@ -53,7 +53,7 @@ version = "^0.1"
 
 [dependencies.tungstenite]
 default-features = false
-version = "^0.21"
+version = "^0.23"
 
 [dev-dependencies]
 assert_matches = "^1"
@@ -96,7 +96,7 @@ path = "examples/tokio_codec.rs"
 required-features = ["tokio_io"]
 
 [features]
-default = []
+default = ["tokio"]
 tokio_io = ["tokio", "async_io_stream/tokio_io"]
 
 [package]

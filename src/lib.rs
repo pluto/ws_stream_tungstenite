@@ -48,7 +48,7 @@ mod import
 		tracing           :: { error                                                                                        } ,
 		std               :: { io, io::{ IoSlice, IoSliceMut }, pin::Pin, fmt, borrow::Cow                                  } ,
 		std               :: { collections::VecDeque, sync::Arc, task::{ Context, Poll }                                    } ,
-		async_tungstenite :: { WebSocketStream as ATungSocket                                                               } ,
+		tokio_tungstenite :: { WebSocketStream as ATungSocket                                                               } ,
 		tungstenite       :: { Message as TungMessage, Error as TungErr, protocol::{ CloseFrame, frame::coding::CloseCode } } ,
 		pharos            :: { Observable, ObserveConfig, Observe, Pharos, PharErr                                          } ,
 		async_io_stream   :: { IoStream                                                                                     } ,
