@@ -60,7 +60,7 @@ mod import
 	//
 	pub(crate) use
 	{
-		tokio::io::{ AsyncRead as TokAsyncRead, AsyncWrite as TokAsyncWrite },
+		tokio::io::{ AsyncRead, AsyncWrite },
 	};
 
 
