@@ -39,7 +39,7 @@ bitflags!
 /// A wrapper around a WebSocket provided by tungstenite. This provides Stream/Sink Vec<u8> to
 /// simplify implementing AsyncRead/AsyncWrite on top of async-tungstenite.
 //
-pub(crate) struct TungWebSocket<S>  where S: TokAsyncRead + TokAsyncWrite + Send + Unpin
+pub(crate) struct TungWebSocket<S>  where S: AsyncRead + AsyncWrite + Send + Unpin
 {
 	inner: ATungSocket<S> ,
 
@@ -49,7 +49,7 @@ pub(crate) struct TungWebSocket<S>  where S: TokAsyncRead + TokAsyncWrite + Send
 }
 
 
-impl<S> TungWebSocket<S> where S: TokAsyncRead + TokAsyncWrite + Send + Unpin
+impl<S> TungWebSocket<S> where S: AsyncRead + AsyncWrite + Send + Unpin
 {
 	/// Create a new Wrapper for a WebSocket provided by Tungstenite
 	//
@@ -158,7 +158,7 @@ impl<S> TungWebSocket<S> where S: TokAsyncRead + TokAsyncWrite + Send + Unpin
 
 
 
-impl<S: Unpin> Stream for TungWebSocket<S> where S: TokAsyncRead + TokAsyncWrite + Send
+impl<S: Unpin> Stream for TungWebSocket<S> where S: AsyncRead + AsyncWrite + Send
 {
 	type Item = Result<Vec<u8>, io::Error>;
 
@@ -392,7 +392,7 @@ impl<S: Unpin> Stream for TungWebSocket<S> where S: TokAsyncRead + TokAsyncWrite
 
 
 
-impl<S> Sink<Vec<u8>> for TungWebSocket<S> where S: TokAsyncRead + TokAsyncWrite + Send + Unpin
+impl<S> Sink<Vec<u8>> for TungWebSocket<S> where S: AsyncRead + AsyncWrite + Send + Unpin
 {
 	type Error = io::Error;
 
@@ -570,7 +570,7 @@ fn to_io_error( err: TungErr ) -> io::Error
 }
 
 
-impl<S> Observable< WsEvent > for TungWebSocket<S> where S: TokAsyncRead + TokAsyncWrite + Send + Unpin
+impl<S> Observable< WsEvent > for TungWebSocket<S> where S: AsyncRead + AsyncWrite + Send + Unpin
 {
 	type Error = WsErr;
 
